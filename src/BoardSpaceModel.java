@@ -23,6 +23,7 @@ public class BoardSpaceModel extends JPanel {
                 boardSpace.setBackground(Color.BLUE);
             }
         });
+        //You should add the mouse listeners in the controller rather than here. Do this by getting the board from the model and adding the listeners from there
         return boardSpace;
     }
 
