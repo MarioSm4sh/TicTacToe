@@ -1,3 +1,8 @@
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 public class BoardController {
 
     private BoardModel boardModel;
@@ -7,6 +12,8 @@ public class BoardController {
         boardModel = model;
         boardView = view;
     }
+
+
 
 
 }

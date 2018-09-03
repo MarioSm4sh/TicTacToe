@@ -2,10 +2,11 @@ public class BoardModel {
 
     private Player player1;
     private Player player2;
-    private BoardSpaceModel[][] board = new BoardSpaceModel[3][3];
+    private BoardSpaceModel[][] board;
 
 
     public BoardModel(Player p1, Player p2) {
+        board = new BoardSpaceModel[3][3];
         player1 = p1;
         player2 = p2;
 
@@ -14,6 +15,10 @@ public class BoardModel {
                 board[r][c] = new BoardSpaceModel();
             }
         }
+    }
+
+    public BoardSpaceModel[][] getBoard() {
+        return board;
     }
 
 
