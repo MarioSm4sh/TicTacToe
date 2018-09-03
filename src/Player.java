@@ -3,9 +3,11 @@ public class Player {
     private int score = INITIAL_SCORE;
     private char playerLetter;
     private boolean hasWon = false;
+    private boolean isActive;
 
-    public Player(char letter) {
+    public Player(char letter, boolean activeStatus) {
         playerLetter = letter;
+        isActive = activeStatus;
     }
 
     public void incrementScore() {
@@ -19,4 +21,9 @@ public class Player {
     public void setWinStatus(boolean outcome) {
         hasWon = outcome;
     }
+
+    public void setActiveStatus(boolean turn) {
+        isActive = turn;
+    }
+
 }
