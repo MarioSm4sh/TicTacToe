@@ -28,8 +28,10 @@ public class BoardController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                boardView.drawX(space);
-                //boardSpace.setBoardSpace(boardView.drawX(space));
+                boardSpace.setIsOccupied(true);
+                boardSpace.setPlayerOccupyingSpace(boardModel.getActivePlayer());
+                boardModel.switchTurns();
+                space.repaint();
                 System.out.println("hello world");
 //                if(boardModel.getActivePlayer().getPlayerLetter() == 'X') {
 //                    boardView.drawX(space);

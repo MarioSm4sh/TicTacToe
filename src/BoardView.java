@@ -30,30 +30,7 @@ public class BoardView extends JFrame {
     }
 
     public void drawX(JPanel space) {
-//        space = new JPanel() {
-//            protected void paintComponent(Graphics g) {
-//                super.paintComponent(g);
-//                //g.drawLine(10, 10, 20, 35);
-//                g.setColor(Color.RED);
-//                g.fillRect(10, 10, 50, 50);
-//            }
-//        };
-//        return boardSpace;
-//         return new BoardSpaceModel() {
-//            protected void paintComponent(Graphics g) {
-//                super.paintComponent(g);
-//                g.setColor(Color.BLUE);
-//                g.fillRect(10, 10, 50, 50);
-//            }
-//        };
-//        if(space instanceof JPanel) {
-//            Graphics g = space.getGraphics();
-//            g.setColor(Color.BLUE);
-//            g.drawLine(10, 10, 50, 50);
-//            //g.fillRect(10, 10, 50, 50);
-//
-//        }
-        
+
     }
 
     public void drawO(JPanel boardSpace) {

@@ -28,6 +28,16 @@ public class BoardModel {
         return player2;
     }
 
+    public void switchTurns() {
+        if(player1.getActiveStatus()) {
+            player1.setActiveStatus(false);
+            player2.setActiveStatus(true);
+        } else if(player2.getActiveStatus()) {
+            player2.setActiveStatus(false);
+            player1.setActiveStatus(true);
+        }
+    }
+
     public Player getPlayer1() {
         return player1;
     }
