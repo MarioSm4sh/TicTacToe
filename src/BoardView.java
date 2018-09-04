@@ -30,7 +30,7 @@ public class BoardView extends JFrame {
     }
 
     public void drawX(JPanel space) {
-//        JPanel boardSpace = new JPanel() {
+//        space = new JPanel() {
 //            protected void paintComponent(Graphics g) {
 //                super.paintComponent(g);
 //                //g.drawLine(10, 10, 20, 35);
@@ -47,9 +47,10 @@ public class BoardView extends JFrame {
 //            }
 //        };
 //        if(space instanceof JPanel) {
-////            Graphics g = space.getGraphics();
-////            g.setColor(Color.BLUE);
-////            g.fillRect(10, 10, 50, 50);
+//            Graphics g = space.getGraphics();
+//            g.setColor(Color.BLUE);
+//            g.drawLine(10, 10, 50, 50);
+//            //g.fillRect(10, 10, 50, 50);
 //
 //        }
         

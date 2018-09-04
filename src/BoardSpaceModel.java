@@ -5,6 +5,7 @@ public class BoardSpaceModel extends JPanel {
     private boolean isOccupied;
     JPanel boardSpace;
 
+
     public BoardSpaceModel() {
         isOccupied = false;
         boardSpace = new JPanel();
@@ -12,6 +13,10 @@ public class BoardSpaceModel extends JPanel {
         boardSpace.setMaximumSize(new Dimension(100, 100));
         boardSpace.setPreferredSize(new Dimension(100, 100));
         boardSpace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
 
     public JPanel getBoardSpace() {
