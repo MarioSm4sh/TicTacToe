@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class BoardSpaceModel extends JPanel {
     private boolean isOccupied;
@@ -18,6 +16,11 @@ public class BoardSpaceModel extends JPanel {
 
     public JPanel getBoardSpace() {
         return boardSpace;
+    }
+
+    public void setBoardSpace(JPanel newBoardSpace) {
+        boardSpace = newBoardSpace;
+
     }
 
     public void setIsOccupied(boolean status) {
