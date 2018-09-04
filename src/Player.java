@@ -26,4 +26,12 @@ public class Player {
         isActive = turn;
     }
 
+    public boolean getActiveStatus() {
+        return isActive;
+    }
+
+    public char getPlayerLetter() {
+        return playerLetter;
+    }
+
 }

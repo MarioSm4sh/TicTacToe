@@ -5,26 +5,22 @@ import java.awt.event.MouseEvent;
 
 public class BoardSpaceModel extends JPanel {
     private boolean isOccupied;
+    JPanel boardSpace;
 
     public BoardSpaceModel() {
         isOccupied = false;
+        boardSpace = new JPanel();
+        boardSpace.setMinimumSize(new Dimension(100, 100));
+        boardSpace.setMaximumSize(new Dimension(100, 100));
+        boardSpace.setPreferredSize(new Dimension(100, 100));
+        boardSpace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
-    public JPanel drawAndAddMouseListenersToBoardSpaces(int size) {
-        JPanel boardSpace = new JPanel();
-        boardSpace.setMinimumSize(new Dimension(size, size));
-        boardSpace.setMaximumSize(new Dimension(size, size));
-        boardSpace.setPreferredSize(new Dimension(size, size));
-        boardSpace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        boardSpace.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                boardSpace.setBackground(Color.BLUE);
-            }
-        });
-        //You should add the mouse listeners in the controller rather than here. Do this by getting the board from the model and adding the listeners from there
+    public JPanel getBoardSpace() {
         return boardSpace;
     }
 
+    public void setIsOccupied(boolean status) {
+        isOccupied = status;
+    }
 }

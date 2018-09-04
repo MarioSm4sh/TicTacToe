@@ -21,6 +21,13 @@ public class BoardModel {
         return board;
     }
 
+    public Player getActivePlayer() {
+        if(player1.getActiveStatus()) {
+            return player1;
+        }
+        return player2;
+    }
+
     public Player getPlayer1() {
         return player1;
     }
