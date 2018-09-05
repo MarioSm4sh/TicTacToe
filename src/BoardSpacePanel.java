@@ -27,10 +27,11 @@ public class BoardSpacePanel extends JPanel {
         if(this.getPlayerOccupyingSpace() != null) {
             if(this.getPlayerOccupyingSpace().getPlayerLetter() == 'X') {
                 g.setColor(Color.RED);
-                g.drawLine(10, 10, 20, 20);
+                g.drawLine(0, 0, 100, 100);
+                g.drawLine(100, 0, 0, 100);
             } else {
                 g.setColor(Color.BLUE);
-                g.drawLine(10, 10, 20, 20);
+                g.drawOval(0, 0, 100, 100);
             }
         }
     }
