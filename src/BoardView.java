@@ -6,7 +6,7 @@ public class BoardView extends JFrame {
     private BoardModel boardModel;
     public BoardView(BoardModel model) {
         boardModel = model;
-        this.drawBoardAndWindow();
+        drawBoardAndWindow();
     }
 
     private void drawBoardAndWindow() {
@@ -14,26 +14,19 @@ public class BoardView extends JFrame {
 
         for(int r = 0;  r < 3; r++) {
             for(int c = 0; c < 3; c++) {
-                contentPanel.add(boardModel.getBoard()[r][c].getBoardSpace());
+                contentPanel.add(boardModel.getBoard()[r][c]);
             }
         }
 
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Tic Tac Toe");
         frame.setSize(500, 500);
-        frame.setLayout(new GridLayout(3, 3));
+        frame.setLayout(new BorderLayout());
 
-        frame.setContentPane(contentPanel);
+        frame.add(contentPanel, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void drawX(JPanel space) {
-
-    }
-
-    public void drawO(JPanel boardSpace) {
-
-    }
 }

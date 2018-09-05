@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,17 +21,19 @@ public class BoardController {
         }
     }
 
-    private void addMouseListenersToBoardSpacesHelper(BoardSpaceModel boardSpace) {
-        JPanel space = boardSpace.getBoardSpace();
-        space.addMouseListener(new MouseAdapter() {
+    private void addMouseListenersToBoardSpacesHelper(BoardSpacePanel boardSpace) {
+        //JPanel space = boardSpace.getBoardSpace();
+        boardSpace.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 boardSpace.setIsOccupied(true);
                 boardSpace.setPlayerOccupyingSpace(boardModel.getActivePlayer());
                 boardModel.switchTurns();
-                space.repaint();
-                System.out.println("hello world");
+                boardSpace.revalidate();
+                //boardSpace.setBackground(Color.RED);
+                boardSpace.repaint();
+                System.out.println(Integer.toString(boardSpace.getRow()) + ", " +  Integer.toString(boardSpace.getCol()));
 //                if(boardModel.getActivePlayer().getPlayerLetter() == 'X') {
 //                    boardView.drawX(space);
 //                } else {
