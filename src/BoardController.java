@@ -30,15 +30,10 @@ public class BoardController {
                 boardSpace.setIsOccupied(true);
                 boardSpace.setPlayerOccupyingSpace(boardModel.getActivePlayer());
                 boardModel.switchTurns();
+                //boardSpace.setEnabled(false);
                 boardSpace.revalidate();
-                //boardSpace.setBackground(Color.RED);
                 boardSpace.repaint();
-                System.out.println(Integer.toString(boardSpace.getRow()) + ", " +  Integer.toString(boardSpace.getCol()));
-//                if(boardModel.getActivePlayer().getPlayerLetter() == 'X') {
-//                    boardView.drawX(space);
-//                } else {
-//                    boardView.drawO(space);
-//                }
+                //System.out.println(Integer.toString(boardSpace.getRow()) + ", " +  Integer.toString(boardSpace.getCol()));
             }
         });
     }
