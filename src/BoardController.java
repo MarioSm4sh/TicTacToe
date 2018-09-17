@@ -22,7 +22,6 @@ public class BoardController {
     }
 
     private void addMouseListenersToBoardSpacesHelper(BoardSpacePanel boardSpace) {
-        //JPanel space = boardSpace.getBoardSpace();
         boardSpace.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -30,9 +29,9 @@ public class BoardController {
                 boardSpace.setIsOccupied(true);
                 boardSpace.setPlayerOccupyingSpace(boardModel.getActivePlayer());
                 boardModel.switchTurns();
-                //boardSpace.setEnabled(false);
                 boardSpace.revalidate();
                 boardSpace.repaint();
+                boardSpace.removeMouseListener(this);
                 //System.out.println(Integer.toString(boardSpace.getRow()) + ", " +  Integer.toString(boardSpace.getCol()));
             }
         });

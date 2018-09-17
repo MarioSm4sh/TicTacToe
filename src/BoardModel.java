@@ -46,8 +46,4 @@ public class BoardModel {
         return player2;
     }
 
-    public String toString() {
-        return "player: " + getActivePlayer();
-    }
-
 }
