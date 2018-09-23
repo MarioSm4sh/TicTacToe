@@ -7,8 +7,6 @@ public class BoardSpacePanel extends JPanel {
     private int row;
     private int col;
     private Player playerOccupyingSpace;
-    private boolean enabled;
-    BufferedImage playerImage;
 
 
     public BoardSpacePanel(int r, int c) {
@@ -16,7 +14,6 @@ public class BoardSpacePanel extends JPanel {
         col = c;
         playerOccupyingSpace = null;
         isOccupied = false;
-        enabled = true;
         setMinimumSize(new Dimension(100, 100));
         setMaximumSize(new Dimension(100, 100));
         setPreferredSize(new Dimension(100, 100));
@@ -36,10 +33,6 @@ public class BoardSpacePanel extends JPanel {
                 g.drawOval(0, 0, this.getWidth(), this.getHeight());
             }
         }
-    }
-
-    private void setPlayerImage(BufferedImage image) {
-        playerImage = image;
     }
 
     public void setPlayerOccupyingSpace(Player player) {

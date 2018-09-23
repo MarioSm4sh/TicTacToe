@@ -14,6 +14,10 @@ public class Player {
         score++;
     }
 
+    public void setScore(int s) {
+        score = s;
+    }
+
     public int getScore() {
         return score;
     }
