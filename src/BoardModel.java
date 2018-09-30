@@ -17,6 +17,14 @@ public class BoardModel {
         }
     }
 
+    public void resetBoard() {
+        for(int r = 0; r < 3; r++) {
+            for(int c = 0; c < 3; c++) {
+                board[r][c] = new BoardSpacePanel(r, c);
+            }
+        }
+    }
+
     public BoardSpacePanel[][] getBoard() {
         return board;
     }

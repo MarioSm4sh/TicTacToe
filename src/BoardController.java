@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -28,11 +29,21 @@ public class BoardController {
                 super.mouseClicked(e);
                 boardSpace.setIsOccupied(true);
                 boardSpace.setPlayerOccupyingSpace(boardModel.getActivePlayer());
-                boardModel.switchTurns();
                 boardSpace.revalidate();
                 boardSpace.repaint();
                 boardSpace.removeMouseListener(this);
                 checkForWin();
+                if (boardModel.getPlayer1().getWinStatus() || boardModel.getPlayer2().getWinStatus()) {
+                    int response = JOptionPane.showConfirmDialog(null,boardModel.getActivePlayer() + " Wins! Would you like to continue?", "Confirm",
+                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if(response == JOptionPane.NO_OPTION) {
+                        System.exit(0);
+                    } else {
+                        boardModel.resetBoard();
+                        addMouseListenersToBoardSpaces();
+                    }
+                }
+                boardModel.switchTurns();
             }
         });
     }
@@ -42,57 +53,25 @@ public class BoardController {
         Player player1 = boardModel.getPlayer1();
         Player player2 = boardModel.getPlayer2();
 
-        //For checking each horizontal row
-        for(int r = 0; r < board.length; r++) {
-            if(board[r][0].getPlayerOccupyingSpace() == null || board[r][1].getPlayerOccupyingSpace() == null || board[r][2].getPlayerOccupyingSpace() == null) {
-                continue;
-            }
-            for(int c = 0; c < board[r].length; c++) {
-                if(board[r][c].getPlayerOccupyingSpace() == player1) {
-                    player1.incrementScore();
-                } else if(board[r][c].getPlayerOccupyingSpace() == player2) {
-                    player2.incrementScore();
-                }
-            }
-            if(player1.getScore() == 3) {
-                player1.setWinStatus(true);
-                System.out.println("Player 1 Wins1!");
-                return;
-            } else if(player2.getScore() == 3) {
-                player2.setWinStatus(true);
-                System.out.println("Player 2 Wins1!");
+        //Horizontal
+        for (int r = 0; r < board.length; r++) {
+            if (checkForWinHelper(board[r], player1, player2)) {
                 return;
             }
-            player1.setScore(0);
-            player2.setScore(0);
         }
 
-        //For checking each vertical column
-        for(int c = 0; c < board.length; c++) {
-            if(board[0][c].getPlayerOccupyingSpace() == null || board[1][c].getPlayerOccupyingSpace() == null || board[2][c].getPlayerOccupyingSpace() == null) {
-                continue;
+        //Vertical
+        for (int c = 0; c < board.length; c++) {
+            BoardSpacePanel[] verticalSpaces = new BoardSpacePanel[3];
+            for (int r = 0; r < board[c].length; r++) {
+                verticalSpaces[r] = board[r][c];
             }
-            for(int r = 0; r < board[c].length; r++) {
-                if(board[c][r].getPlayerOccupyingSpace() == player1) {
-                    player1.incrementScore();
-                } else if(board[c][r].getPlayerOccupyingSpace() == player2) {
-                    player2.incrementScore();
-                }
-            }
-            if(player1.getScore() == 3) {
-                player1.setWinStatus(true);
-                System.out.println("Player 1 Wins2!");
-                return;
-            } else if(player2.getScore() == 3) {
-                player2.setWinStatus(true);
-                System.out.println("Player 2 Wins2!");
+            if(checkForWinHelper(verticalSpaces, player1, player2)) {
                 return;
             }
-            player1.setScore(0);
-            player2.setScore(0);
         }
 
-        //for checking diagonals
+        //Diagonal
         if(board[0][0].getPlayerOccupyingSpace() == player1 && board[1][1].getPlayerOccupyingSpace() == player1 && board[2][2].getPlayerOccupyingSpace() == player1) {
             player1.setWinStatus(true);
             System.out.println("Player 1 Wins3!");
@@ -104,4 +83,33 @@ public class BoardController {
         }
     }
 
-}
+    private boolean checkForWinHelper(BoardSpacePanel[] setOfBoardSpaces, Player player1, Player player2) {
+
+        for(int c = 0; c < setOfBoardSpaces.length; c++) {
+            if(setOfBoardSpaces[c].getPlayerOccupyingSpace() == null) {
+                player1.setScore(0);
+                player2.setScore(0);
+                return false;
+            } else {
+                if (setOfBoardSpaces[c].getPlayerOccupyingSpace() == player1) {
+                    player1.incrementScore();
+                } else {
+                    player2.incrementScore();
+                }
+            }
+        }
+        if(player1.getScore() == 3) {
+            player1.setWinStatus(true);
+            System.out.println("Player 1 Wins!");
+            return true;
+        } else if(player2.getScore() == 3) {
+            player2.setWinStatus(true);
+            System.out.println("Player 2 Wins!");
+            return true;
+        }
+        player1.setScore(0);
+        player2.setScore(0);
+        return false;
+    }
+
+}   //End of Class

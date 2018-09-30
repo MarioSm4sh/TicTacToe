@@ -26,6 +26,10 @@ public class Player {
         hasWon = outcome;
     }
 
+    public boolean getWinStatus() {
+        return hasWon;
+    }
+
     public void setActiveStatus(boolean turn) {
         isActive = turn;
     }
@@ -36,6 +40,10 @@ public class Player {
 
     public char getPlayerLetter() {
         return playerLetter;
+    }
+
+    public String toString() {
+        return "Player " + getPlayerLetter();
     }
 
 }
