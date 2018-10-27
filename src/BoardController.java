@@ -39,13 +39,18 @@ public class BoardController {
                     if(response == JOptionPane.NO_OPTION) {
                         System.exit(0);
                     } else {
-                        boardModel.resetBoard();
-                        addMouseListenersToBoardSpaces();
+                        resetGame();
                     }
                 }
                 boardModel.switchTurns();
             }
         });
+    }
+
+    private void resetGame() {
+        boardView.dispose();
+        String[] args = {};
+        TicTacToe.main(args);
     }
 
     private void checkForWin() {
@@ -77,6 +82,14 @@ public class BoardController {
             System.out.println("Player 1 Wins3!");
             return;
         } else if(board[0][0].getPlayerOccupyingSpace() == player2 && board[1][1].getPlayerOccupyingSpace() == player2 && board[2][2].getPlayerOccupyingSpace() == player2) {
+            player2.setWinStatus(true);
+            System.out.println("Player 2 Wins3!");
+            return;
+        } else if(board[0][2].getPlayerOccupyingSpace() == player1 && board[1][1].getPlayerOccupyingSpace() == player1 && board[2][0].getPlayerOccupyingSpace() == player1) {
+            player1.setWinStatus(true);
+            System.out.println("Player 1 Wins3!");
+            return;
+        } else if(board[0][2].getPlayerOccupyingSpace() == player2 && board[1][1].getPlayerOccupyingSpace() == player2 && board[2][0].getPlayerOccupyingSpace() == player2) {
             player2.setWinStatus(true);
             System.out.println("Player 2 Wins3!");
             return;

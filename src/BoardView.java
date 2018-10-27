@@ -23,14 +23,13 @@ public class BoardView extends JFrame {
 
     private void drawWindow() {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("Tic Tac Toe");
-        frame.setSize(500, 500);
-        frame.setLayout(new BorderLayout());
+        setSize(500, 500);
+        setLayout(new BorderLayout());
 
-        frame.add(contentPanel, BorderLayout.CENTER);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(contentPanel, BorderLayout.CENTER);
+        pack();
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }
