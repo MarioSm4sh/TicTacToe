@@ -43,8 +43,32 @@ public class BoardController {
                     }
                 }
                 boardModel.switchTurns();
+                playerTwoRandomMove();
             }
         });
+    }
+
+    private void playerTwoRandomMove() {
+        BoardSpacePanel boardSpace = boardModel.getBoard()[(int) (Math.random() * 3)][(int) (Math.random() * 3)];
+        while(boardSpace.getIsOccupied()) {
+            boardSpace = boardModel.getBoard()[(int) (Math.random()* 3)][(int) (Math.random()* 3)];
+        }
+        boardSpace.setIsOccupied(true);
+        boardSpace.setPlayerOccupyingSpace(boardModel.getActivePlayer());
+        boardSpace.revalidate();
+        boardSpace.repaint();
+        boardSpace.removeMouseListener(boardSpace.getMouseListeners()[0]);
+        checkForWin();
+        if (boardModel.getPlayer1().getWinStatus() || boardModel.getPlayer2().getWinStatus()) {
+            int response = JOptionPane.showConfirmDialog(null,boardModel.getActivePlayer() + " Wins! Would you like to continue?", "Confirm",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(response == JOptionPane.NO_OPTION) {
+                System.exit(0);
+            } else {
+                resetGame();
+            }
+        }
+        boardModel.switchTurns();
     }
 
     private void resetGame() {
@@ -79,19 +103,19 @@ public class BoardController {
         //Diagonal
         if(board[0][0].getPlayerOccupyingSpace() == player1 && board[1][1].getPlayerOccupyingSpace() == player1 && board[2][2].getPlayerOccupyingSpace() == player1) {
             player1.setWinStatus(true);
-            System.out.println("Player 1 Wins3!");
+            System.out.println("Player 1 Wins!");
             return;
         } else if(board[0][0].getPlayerOccupyingSpace() == player2 && board[1][1].getPlayerOccupyingSpace() == player2 && board[2][2].getPlayerOccupyingSpace() == player2) {
             player2.setWinStatus(true);
-            System.out.println("Player 2 Wins3!");
+            System.out.println("Player 2 Wins!");
             return;
         } else if(board[0][2].getPlayerOccupyingSpace() == player1 && board[1][1].getPlayerOccupyingSpace() == player1 && board[2][0].getPlayerOccupyingSpace() == player1) {
             player1.setWinStatus(true);
-            System.out.println("Player 1 Wins3!");
+            System.out.println("Player 1 Wins!");
             return;
         } else if(board[0][2].getPlayerOccupyingSpace() == player2 && board[1][1].getPlayerOccupyingSpace() == player2 && board[2][0].getPlayerOccupyingSpace() == player2) {
             player2.setWinStatus(true);
-            System.out.println("Player 2 Wins3!");
+            System.out.println("Player 2 Wins!");
             return;
         }
     }

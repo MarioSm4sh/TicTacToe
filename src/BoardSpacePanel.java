@@ -42,4 +42,8 @@ public class BoardSpacePanel extends JPanel {
     public void setIsOccupied(boolean status) {
         isOccupied = status;
     }
+
+    public boolean getIsOccupied() {
+        return isOccupied;
+    }
 }
