@@ -4,14 +4,10 @@ import java.awt.image.BufferedImage;
 
 public class BoardSpacePanel extends JPanel {
     private boolean isOccupied;
-    private int row;
-    private int col;
     private Player playerOccupyingSpace;
 
 
-    public BoardSpacePanel(int r, int c) {
-        row = r;
-        col = c;
+    public BoardSpacePanel() {
         playerOccupyingSpace = null;
         isOccupied = false;
         setMinimumSize(new Dimension(100, 100));
@@ -41,14 +37,6 @@ public class BoardSpacePanel extends JPanel {
 
     public Player getPlayerOccupyingSpace() {
         return playerOccupyingSpace;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getCol() {
-        return col;
     }
 
     public void setIsOccupied(boolean status) {
